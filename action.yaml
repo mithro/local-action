@@ -1,0 +1,19 @@
+name: Local Action
+description: ""
+
+inputs:
+  action:
+    description: 'Action to run'
+    required: true
+  with:
+    description: 'with'
+  name:
+    description: 'name'
+
+runs:
+  using: "composite"
+
+  steps:
+  - name: ${{ inputs.name }}
+    uses: ${{ inputs.action }}
+    with: ${{ fromJSON(inputs.with) }}
